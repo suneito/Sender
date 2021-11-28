@@ -6,6 +6,13 @@ import Server.Server;
 import Util.ToolSender;
 import Crypto.Encryption;
 
+/**
+ * Controller
+ * 
+ * Starter class
+ * @author Suneo
+ *
+ */
 
 public class Controller {
 	

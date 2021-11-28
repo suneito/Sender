@@ -6,8 +6,19 @@ import Control.GeneralConstants;
 import Crypto.Encryption;
 import Util.ToolSender;
 
+/**
+ * Server
+ * Server instance class
+ * @author Suneo
+ *
+ */
+
 public class Server extends Estructure{
 	
+    /**
+     * Consructor of the instance
+     * @param encrypterObj
+     */
     public Server(Encryption encrypterObj) {
     	ToolSender.cls();
     	this.encrypter = encrypterObj;    	
@@ -19,10 +30,15 @@ public class Server extends Estructure{
         this.writeData();
     }
    
+    /**
+     * Start connection
+     * @param port
+     */
     public void startConnection(int port) {
         try {
             serverSocket = new ServerSocket(port);
             ToolSender.print("Waiting for a connection at " + String.valueOf(port) + ".");
+            //Wait for a client accept the connection
             socket = serverSocket.accept();
             ToolSender.print("Connected with " + socket.getInetAddress().getHostName() + ".\n");
             ToolSender.print(GeneralConstants.IsoLevel.IL2);
@@ -32,6 +48,10 @@ public class Server extends Estructure{
         }
     }
 
+    /**
+     * Run on connection by thread
+     * @param port
+     */
     public void runConnection(final int port) {
         Thread threadServer = new Thread(new Runnable() {
             public void run() {

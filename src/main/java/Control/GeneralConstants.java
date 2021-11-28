@@ -1,5 +1,12 @@
 package Control;
 
+/**
+ * GeneralConstants
+ * Constants class
+ * @author Suneo
+ *
+ */
+
 public class GeneralConstants {
     protected final static String USER = "[Myself] > ";
     protected final static String SERVER_INSTANCE_LONG= "SERVER";

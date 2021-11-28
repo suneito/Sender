@@ -10,6 +10,13 @@ import java.util.Scanner;
 import Crypto.Encryption;
 import Util.ToolSender;
 
+/**
+ * Estructure
+ * Estructure for both instances
+ * @author Suneo
+ *
+ */
+
 public class Estructure extends GeneralConstants {	
 	protected Socket socket;
 	protected ServerSocket serverSocket;
@@ -20,6 +27,9 @@ public class Estructure extends GeneralConstants {
     protected static String comunicador = "";
     protected static Key key;
     
+    /**
+     * Get the data to send from console, previously encrypted
+     */
     public void writeData() {
         String entrada = "";
         while (true) { 
@@ -33,6 +43,10 @@ public class Estructure extends GeneralConstants {
         }
     }
     
+    /**
+     * Send encrypted data with the DataOutputStream via buffer
+     * @param String to send
+     */
     public void sendData(String s) {
         try {
             exitBuffer.writeUTF(s);
@@ -43,6 +57,9 @@ public class Estructure extends GeneralConstants {
         }
     }
     
+    /**
+     * Get encrypted data from DataInputStream and decrypts to show it
+     */
     public void getData() {
         String st = "";
         try {
@@ -56,6 +73,9 @@ public class Estructure extends GeneralConstants {
         }
     }
     
+    /**
+     * Ends the connection
+     */
     public void closeConnection() {
         try {
         	socket.close();
@@ -73,6 +93,9 @@ public class Estructure extends GeneralConstants {
         }
     }
     
+    /**
+     * Start in-out streams
+     */
     public void stream() {
         try {
             entryBuffer = new DataInputStream(socket.getInputStream());

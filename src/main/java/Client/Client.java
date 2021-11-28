@@ -6,8 +6,19 @@ import Control.GeneralConstants;
 import Crypto.Encryption;
 import Util.ToolSender;
 
+/**
+ * Client
+ * Client instance class
+ * @author Suneo
+ *
+ */
+
 public class Client extends Estructure{  
-	
+   
+	/**
+     * Consructor of the instance
+     * @param encrypterObj
+     */
 	public Client(Encryption encrypterObj) {
 		ToolSender.cls();
     	this.encrypter = encrypterObj;
@@ -23,6 +34,11 @@ public class Client extends Estructure{
         this.writeData();
 	}
 	
+    /**
+     * Start connection
+     * @param server ip
+     * @param server ip port
+     */
     private void startConnection(String ip, int port) {
         try {
             socket = new Socket(ip, port);
@@ -34,6 +50,10 @@ public class Client extends Estructure{
         }
     }
 
+    /**
+     * Run on connection by thread
+     * @param port
+     */
     public void runConnection(final String ip, final int port) {
         Thread threadClient = new Thread(new Runnable() {
             public void run() {
