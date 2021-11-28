@@ -16,9 +16,9 @@ import Util.ToolSender;
 public class Client extends Estructure{  
    
 	/**
-     * Consructor of the instance
-     * @param encrypterObj
-     */
+    * Consructor of the instance
+    * @param encrypterObj
+    */
 	public Client(Encryption encrypterObj) {
 		ToolSender.cls();
     	this.encrypter = encrypterObj;
