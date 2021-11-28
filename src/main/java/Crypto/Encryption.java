@@ -1,4 +1,5 @@
 package Crypto;
+
 import java.security.Key;
 import java.util.Base64;
 
@@ -9,17 +10,18 @@ import Control.GeneralConstants;
 import Util.ToolSender;
 
 /**
- * Encryption
- * Encryption tools class
+ * Encryption Encryption tools class
+ * 
  * @author Suneo
  *
  */
 
 public class Encryption {
 	private Key key;
-	
+
 	/**
 	 * Constructor generates a 16 bytes key
+	 * 
 	 * @param determined by user passCrudo
 	 * @throws Exception
 	 */
@@ -27,11 +29,12 @@ public class Encryption {
 		KeyGenerator keyGenerator = KeyGenerator.getInstance(GeneralConstants.CryptoConstants.ALGORITHM_SHORT);
 		keyGenerator.init(128);
 		key = keyGenerator.generateKey();
-		key = new SecretKeySpec(passCrudo.getBytes(),  0, 16, GeneralConstants.CryptoConstants.ALGORITHM_SHORT);				
+		key = new SecretKeySpec(passCrudo.getBytes(), 0, 16, GeneralConstants.CryptoConstants.ALGORITHM_SHORT);
 	}
-	
+
 	/**
-	 * Encrypts the entered text 
+	 * Encrypts the entered text
+	 * 
 	 * @param String clearText
 	 * @return String encrypted text
 	 */
@@ -41,16 +44,16 @@ public class Encryption {
 			cripy = Cipher.getInstance(GeneralConstants.CryptoConstants.ALGORITHM_LONG);
 			cripy.init(Cipher.ENCRYPT_MODE, key);
 			byte[] cripyText = cripy.doFinal(clearText.getBytes());
-			return Base64.getEncoder()
-					.encodeToString(cripyText);
+			return Base64.getEncoder().encodeToString(cripyText);
 		} catch (Exception e) {
-			ToolSender.print( e.getMessage());
-        	return null;
-        }
+			ToolSender.print(e.getMessage());
+			return null;
+		}
 	}
-	
+
 	/**
 	 * Decrypts entered text
+	 * 
 	 * @param String encryptedText
 	 * @return String decrypted text
 	 */
@@ -59,16 +62,15 @@ public class Encryption {
 		try {
 			cripy = Cipher.getInstance(GeneralConstants.CryptoConstants.ALGORITHM_LONG);
 			cripy.init(Cipher.DECRYPT_MODE, key);
-			byte[] plainText = cripy.doFinal(Base64.getDecoder()
-			        .decode(encryptedText));
-			    return new String(plainText);
+			byte[] plainText = cripy.doFinal(Base64.getDecoder().decode(encryptedText));
+			return new String(plainText);
 		} catch (Exception e) {
-        	return encryptedText;
-        }		
+			return encryptedText;
+		}
 	}
-	
+
 	public boolean evalPassword() {
-		//TODO
+		// TODO
 		return false;
 	}
 }
